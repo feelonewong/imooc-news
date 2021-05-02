@@ -142,8 +142,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-
-
 var _nav = _interopRequireDefault(__webpack_require__(/*! @/components/nav/nav.vue */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -152,10 +150,12 @@ var _nav = _interopRequireDefault(__webpack_require__(/*! @/components/nav/nav.v
 //
 //
 //
-//
-//
-var _default = { data: function data() {return { title: "hello" };}, onLoad: function onLoad() {}, components: {
-    Nav: _nav.default },
+var Tab = function Tab() {__webpack_require__.e(/*! require.ensure | components/tab/tab */ "components/tab/tab").then((function () {return resolve(__webpack_require__(/*! @/components/tab/tab.vue */ 48));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { title: "hello" };}, onLoad: function onLoad() {
+
+  },
+  components: {
+    Nav: _nav.default,
+    Tab: Tab },
 
   methods: {} };exports.default = _default;
 

@@ -81,9 +81,6 @@
 					background-color: #fff;
 
 					.nav-search_icon {
-						// width: 10px;
-						// height: 10px;
-						//border: 1px solid red;
 						margin-right: 10px;
 					}
 

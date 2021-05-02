@@ -1,0 +1,1 @@
+<view class="tab"><scroll-view class="tab-scroll" scroll-x="true"><view class="tab-scroll_box"><block wx:for="{{list}}" wx:for-item="item" wx:for-index="__i0__"><view class="tab-scroll_item">{{''+item.name+''}}</view></block></view></scroll-view><view class="tab_icons"><uni-icons vue-id="0b3671d6-1" size="26" type="gear" color="#666" bind:__l="__l"></uni-icons></view></view>

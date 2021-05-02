@@ -1,15 +1,14 @@
 <template>
 	<view class="content">
 		<Nav></Nav>
-		<view  v-for="(item,index) in 100" :key="index">
-				{{item}}--正文
-		</view>
+		<Tab></Tab>
 		
 	</view>
 </template>
 
 <script>
-	import Nav from "@/components/nav/nav.vue"
+	import Nav from "@/components/nav/nav.vue";
+	import Tab from "@/components/tab/tab.vue"
 	export default {
 		data() {
 			return {
@@ -20,7 +19,8 @@
 
 		},
 		components:{
-			Nav:Nav
+			Nav:Nav,
+			Tab:Tab
 		},
 		methods: {
 
