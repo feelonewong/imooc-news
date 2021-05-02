@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App'
-import Api from "./common/api/api.js";
+import Api from "./common/api/index.js";
 Vue.config.productionTip = false
 Vue.prototype.$api = Api;
 App.mpType = 'app'

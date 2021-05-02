@@ -28,9 +28,10 @@
 		methods: {
 			getLabel() {
 				//this.$api.get_labe.({name:"get_label"}).then()
-				this.$api.get_label({name:"get_label"}).then(response=>{
+				this.$api.get_label({url:"get_label"}).then(response=>{
 					let {data} = response;
 					this.tabList = data;
+					
 				})
 			}
 		}
