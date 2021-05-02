@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<Nav></Nav>
-		<Tab></Tab>
+		<Tab :list="tabList"></Tab>
 		
 	</view>
 </template>
@@ -12,18 +12,30 @@
 	export default {
 		data() {
 			return {
-				title: "hello"
+				tabList:[]
 			}
 		},
 		onLoad() {
 
+		},
+		created() {
+			this.getLabel();
 		},
 		components:{
 			Nav:Nav,
 			Tab:Tab
 		},
 		methods: {
-
+			getLabel() {
+				uniCloud.callFunction({
+					name: "get_label"
+				}).then(res => {
+					let code = res.result.code;
+					if (code === 200) {
+						this.tabList = res.result.data;
+					}
+				})
+			}
 		}
 	}
 </script>

@@ -19,27 +19,22 @@
 <script>
 	export default {
 		name: "tab",
+		props:{
+			list:{
+				type:Array,
+				default(){
+					return [];
+				}
+			}
+		},
 		data() {
 			return {
-				list: []
+				
 			};
 		},
-		created() {
-			this.getLabel();
-		},
+		
 		methods: {
-			getLabel() {
-				uniCloud.callFunction({
-					name: "get_label"
-				}).then(res => {
-					//let {data} = res.data;
-					let code = res.result.code;
-					if (code === 200) {
-						this.list = res.result.data;
-						
-					}
-				})
-			}
+			
 		}
 	}
 </script>
