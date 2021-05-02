@@ -27,13 +27,10 @@
 		},
 		methods: {
 			getLabel() {
-				uniCloud.callFunction({
-					name: "get_label"
-				}).then(res => {
-					let code = res.result.code;
-					if (code === 200) {
-						this.tabList = res.result.data;
-					}
+				//this.$api.get_labe.({name:"get_label"}).then()
+				this.$api.get_label({name:"get_label"}).then(response=>{
+					let {data} = response;
+					this.tabList = data;
 				})
 			}
 		}
