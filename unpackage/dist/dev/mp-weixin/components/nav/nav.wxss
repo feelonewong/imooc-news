@@ -58,9 +58,6 @@
   background-color: #fff;
 }
 .nav .nav-fixed .nav-content .nav-search .nav-search_icon {
-  width: 10px;
-  height: 10px;
-  border: 1px solid red;
   margin-right: 10px;
 }
 .nav .nav-fixed .nav-content .nav-search .nave-search_text {

@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2524248 */
+  src: url('//at.alicdn.com/t/font_2524248_yebk1emo7s.woff2?t=1619925351153') format('woff2');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-search:before {
+  content: "\e626";
+}

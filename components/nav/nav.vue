@@ -8,7 +8,9 @@
 				width: searchWidth+'px'
 			}">
 				<view class="nav-search">
-					<view class="nav-search_icon"></view>
+					<view class="nav-search_icon">
+						<uni-icons type="search" size="16" color="#999"></uni-icons>
+					</view>
 					<view class="nav-search_text">
 						uniapp、vue
 					</view>
@@ -79,9 +81,9 @@
 					background-color: #fff;
 
 					.nav-search_icon {
-						width: 10px;
-						height: 10px;
-						border: 1px solid red;
+						// width: 10px;
+						// height: 10px;
+						//border: 1px solid red;
 						margin-right: 10px;
 					}
 
