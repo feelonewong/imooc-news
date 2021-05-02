@@ -150,7 +150,7 @@ var _nav = _interopRequireDefault(__webpack_require__(/*! @/components/nav/nav.v
 //
 //
 //
-var Tab = function Tab() {__webpack_require__.e(/*! require.ensure | components/tab/tab */ "components/tab/tab").then((function () {return resolve(__webpack_require__(/*! @/components/tab/tab.vue */ 48));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { title: "hello" };}, onLoad: function onLoad() {
+var Tab = function Tab() {Promise.all(/*! require.ensure | components/tab/tab */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tab/tab")]).then((function () {return resolve(__webpack_require__(/*! @/components/tab/tab.vue */ 48));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { title: "hello" };}, onLoad: function onLoad() {
 
   },
   components: {
