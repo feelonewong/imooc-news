@@ -1,10 +1,15 @@
 <template>
 	<view class="home">
 		<navbar></navbar>
-		<tab :list="tabList" @tab="tab"></tab>
+		<tab :list="tabList" 
+			:tabIndex="tabIndex"
+		@tab="tab"></tab>
 
 		<view class="home-list">
-			<list :tab="tabList"></list>
+			<list :tab="tabList"
+				  :activeIndex="activeIndex"
+				  @changeListItem="changeListItem"
+			></list>
 		</view>
 	</view>
 </template>
@@ -16,7 +21,9 @@
 				column:"column",
 				base:"base",
 				image:"image",
-				tabList: []
+				tabList: [],
+				tabIndex:0,
+				activeIndex:0
 			}
 		},
 		onLoad() {
@@ -39,11 +46,15 @@
 
 				})
 			},
+			
 			tab({
 				data,
 				index
 			}) {
-				
+				this.activeIndex = index;
+			},
+			changeListItem(value){
+				this.tabIndex = value;
 			}
 		}
 	}

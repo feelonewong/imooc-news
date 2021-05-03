@@ -1,84 +1,79 @@
 <template>
 	<view>
 		<!-- 基础卡片模式 -->
-		<view v-if=" mode === 'base' " class="listcard">
+		<view v-if=" item.mode === 'base' " class="listcard">
 			<view class="listcard-image">
-				<image src="../../static/follow-active.png" mode="aspectFill"></image>
+				<image :src="item.cover[0]" mode="aspectFill"></image>
 			</view>
 			<view class="listcard-content">
 				<view class="listcard-content__title">
 					<text>
-							这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题
+						{{item.title}}
 					</text>
 				</view>
 				<view class="listcard-content__desc">
 					<view class="listcard-content__desc-label">
 						<view class="listcard-content__desc-label-item">
-							前端
+							{{item.classify}}
 						</view>
 						
 					</view>
 					<view class="listcard-content__desc-browser">
-						120浏览
+						{{item.browse_count}}浏览
 					</view>
 				</view>
 				
 			</view>
 		</view>
 		<!-- 多图卡片模式 -->
-		<view  v-if=" mode === 'column' " class="listcard mode-column">
+		<view  v-if=" item.mode === 'column' " class="listcard mode-column">
 			<view class="listcard-content">
 				<view class="listcard-content__title">
 					<text>
-						这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题
+						{{item.title}}
 					</text>
 				</view>
 				<view class="listcard-image">
-					<view class="listcard-image-item">
-						<image src="../../static/follow-active.png" mode="aspectFill"></image>
+					<view class="listcard-image-item" v-for="(childItem,index) in item.cover.slice(0,4)" >
+						<image :src="childItem" mode="aspectFill" ></image>
 					</view>
-					<view class="listcard-image-item">
-						<image src="../../static/follow-active.png" mode="aspectFill"></image>
-					</view>
-					<view class="listcard-image-item">
-						<image src="../../static/follow-active.png" mode="aspectFill"></image>
-					</view>
+					
 				</view>
 				<view class="listcard-content__desc">
 					<view class="listcard-content__desc-label">
 						<view class="listcard-content__desc-label-item">
-							前端
+							{{item.classify}}
 						</view>
 					</view>
 					<view class="listcard-content__desc-browser">
-						120浏览
+						{{item.browse_count}}浏览
 					</view>
 				</view>
 			</view>
 		</view>
 		<!-- 大图模式 -->
-		<view  v-if=" mode === 'image' " class="listcard mode-image">
+		<view  v-if=" item.mode === 'image' " class="listcard mode-image">
 			<view class="listcard-image">
 				
-					<image src="../../static/follow-active.png" mode="aspectFill"></image>
+					<image :src="item.cover[0]" mode="aspectFill"></image>
 				
 			</view>
 			<view class="listcard-content">
 				
 				<view class="listcard-content__title">
 					<text>
-						这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题
+						{{item.title}}
 					</text>
 				</view>
 				
 				<view class="listcard-content__desc">
 					<view class="listcard-content__desc-label">
 						<view class="listcard-content__desc-label-item">
-							前端
+							{{item.classify}}
 						</view>
 					</view>
 					<view class="listcard-content__desc-browser">
-						120浏览
+						{{item.browse_count}}浏览
 					</view>
 				</view>
 			</view>
@@ -90,15 +85,20 @@
 	export default {
 		name: "list-card",
 		props:{
-			mode:{
-				type:String,
-				default:"base"
+			item:{
+				type:Object,
+				default(){
+					return {}
+				}
 			}
 		},
 		data() {
 			return {
-
+				
 			};
+		},
+		mounted() {
+			
 		}
 	}
 </script>
@@ -185,7 +185,6 @@
 						width: 100%;
 						border-radius: 5px;
 						overflow: hidden;
-						border: 1px solid red;
 						&:nth-child(1){
 							margin-left: 0;
 						}
