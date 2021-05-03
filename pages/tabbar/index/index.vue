@@ -1,22 +1,15 @@
 <template>
 	<view class="home">
-		<Nav></Nav>
-		<Tab :list="tabList" @tab="tab"></Tab>
+		<navbar></navbar>
+		<tab :list="tabList" @tab="tab"></tab>
 
-		<ListScroll>
-			<ListCard :mode=" column "></ListCard>
-			<ListCard :mode=" base "></ListCard>
-			<ListCard :mode=" image "></ListCard>
-		</ListScroll>
+		<view class="home-list">
+			<list :tab="tabList"></list>
+		</view>
 	</view>
 </template>
 
 <script>
-	import Nav from "@/components/nav/nav.vue";
-	import Tab from "@/components/tab/tab.vue";
-	import ListScroll from "@/components/list-scroll/list-scroll.vue";
-	import ListCard from "@/components/list-card/list-card.vue";
-	
 	export default {
 		data() {
 			return {
@@ -32,12 +25,7 @@
 		created() {
 			this.getLabel();
 		},
-		components: {
-			Nav: Nav,
-			Tab: Tab,
-			ListScroll:ListScroll,
-			ListCard:ListCard
-		},
+		
 		methods: {
 			getLabel() {
 				//this.$api.get_labe.({name:"get_label"}).then()
@@ -55,7 +43,7 @@
 				data,
 				index
 			}) {
-				console.log(data, index, "index");
+				
 			}
 		}
 	}
@@ -72,5 +60,8 @@
 		flex-direction: column;
 		flex: 1;
 		overflow: hidden;
+	}
+	.home-list{
+		height: 100%;
 	}
 </style>

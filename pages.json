@@ -23,7 +23,7 @@
 
 		}
 	    ,{
-            "path" : "components/nav/nav",
+            "path" : "components/navbar/navbar",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
