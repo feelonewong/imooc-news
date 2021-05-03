@@ -1,7 +1,7 @@
 <template>
 	<swiper class="home-swiper" :current="activeIndex" @change="changeListItem">
 		<swiper-item class="swiper-item" v-for="(item, index) in tab" :key="index">
-			<ListItem :list="listCacheData[index]"></ListItem>
+			<ListItem :list="listCacheData[index]" @loadMore="loadMore"></ListItem>
 		</swiper-item>
 
 
@@ -29,7 +29,9 @@
 		data() {
 			return {
 				list:[],
-				listCacheData:{}
+				listCacheData:{},
+				pageIndex: 1,
+				pageSize: 5
 			};
 		},
 		watch:{
@@ -38,22 +40,31 @@
 					return;
 				}
 				this.getList(this.activeIndex);
-				console.log(newValue,'---');
 			}
 		},
 		methods: {
+			loadMore(){
+				this.pageIndex++;
+				this.getList(this.activeIndex);
+				console.log(this.pageIndex);
+			},
 			changeListItem(e) {
-				let idx = e.detail.current;
-				this.getList(idx);
-				this.$emit("changeListItem", idx);
+				let {current} = e.detail;
+				this.$emit("changeListItem", current);
+				if(this.listCacheData.length === 0 || !this.listCacheData[current]){
+						this.getList(current);
+				}
 			},
 			getList(current) {
 				this.$api.get_list({
-					name: this.tab[current].name
+					name: this.tab[current].name,
+					pageIndex: this.pageIndex,
+					pageSize: this.pageSize
 				}).then((response) => {
 					let {data} = response;
-					this.listCacheData[current] = data;
-					this.$set(this.listCacheData, current,data);
+					let oldList = this.listCacheData[current]||[];
+					oldList.push(...data);
+					this.$set(this.listCacheData, current,oldList);
 					this.$forceUpdate();
 				})
 			}

@@ -42,6 +42,9 @@
 					let {
 						data
 					} = response;
+					data.unshift({
+						name:"全部"
+					});
 					this.tabList = data;
 
 				})
