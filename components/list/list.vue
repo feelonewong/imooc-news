@@ -28,24 +28,26 @@
 		},
 		data() {
 			return {
-				list:[]
+				list:[],
+				listCacheData:{}
 			};
 		},
-		mounted() {
-			this.getList();
+		watch:{
+			
 		},
 		methods: {
 			changeListItem(e) {
 				let idx = e.detail.current;
 				this.$emit("changeListItem", idx);
+				// this.tab[idx].name
+				this.getList(current);
 			},
-			getList() {
+			getList(current) {
 				this.$api.get_list({
-					url: "get_list"
+					name: this.tab[current].name
 				}).then((response) => {
 					let {data} = response;
 					this.list = data;
-					console.log(data);
 				})
 			}
 		},
