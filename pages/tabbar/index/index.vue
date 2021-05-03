@@ -2,26 +2,28 @@
 	<view class="home">
 		<Nav></Nav>
 		<Tab :list="tabList" @tab="tab"></Tab>
-		
-		<view class="scroll">
-			<scroll-view scroll-y="true" class="list-scroll">
-				<view>
-					<view class="" v-for="(item, index) in 100" :key="index">
-						{{item}}
-					</view>
-				</view>
-			</scroll-view>
-		</view>
+
+		<ListScroll>
+			<ListCard :mode=" column "></ListCard>
+			<ListCard :mode=" base "></ListCard>
+			<ListCard :mode=" image "></ListCard>
+		</ListScroll>
 	</view>
 </template>
 
 <script>
 	import Nav from "@/components/nav/nav.vue";
-	import Tab from "@/components/tab/tab.vue"
+	import Tab from "@/components/tab/tab.vue";
+	import ListScroll from "@/components/list-scroll/list-scroll.vue";
+	import ListCard from "@/components/list-card/list-card.vue";
+	
 	export default {
 		data() {
 			return {
-				tabList:[]
+				column:"column",
+				base:"base",
+				image:"image",
+				tabList: []
 			}
 		},
 		onLoad() {
@@ -30,44 +32,45 @@
 		created() {
 			this.getLabel();
 		},
-		components:{
-			Nav:Nav,
-			Tab:Tab
+		components: {
+			Nav: Nav,
+			Tab: Tab,
+			ListScroll:ListScroll,
+			ListCard:ListCard
 		},
 		methods: {
 			getLabel() {
 				//this.$api.get_labe.({name:"get_label"}).then()
-				this.$api.get_label({url:"get_label"}).then(response=>{
-					let {data} = response;
+				this.$api.get_label({
+					url: "get_label"
+				}).then(response => {
+					let {
+						data
+					} = response;
 					this.tabList = data;
-					
+
 				})
 			},
-			tab({data, index}){
-				console.log(data,index,"index");
+			tab({
+				data,
+				index
+			}) {
+				console.log(data, index, "index");
 			}
 		}
 	}
 </script>
 
 <style lang="scss">
-	page{
+	page {
 		height: 100%;
 		display: flex;
 	}
-	.home{
+
+	.home {
 		display: flex;
 		flex-direction: column;
 		flex: 1;
-		.scroll{
-			flex: 1;
-			overflow: hidden;
-			box-sizing: border-box;
-			.list-scroll{
-				height: 100%;
-				display: flex;
-				flex-direction: column;
-			}
-		}
+		overflow: hidden;
 	}
 </style>
