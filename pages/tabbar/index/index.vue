@@ -1,8 +1,17 @@
 <template>
-	<view class="content">
+	<view class="home">
 		<Nav></Nav>
-		<Tab :list="tabList"></Tab>
+		<Tab :list="tabList" @tab="tab"></Tab>
 		
+		<view class="scroll">
+			<scroll-view scroll-y="true" class="list-scroll">
+				<view>
+					<view class="" v-for="(item, index) in 100" :key="index">
+						{{item}}
+					</view>
+				</view>
+			</scroll-view>
+		</view>
 	</view>
 </template>
 
@@ -33,11 +42,32 @@
 					this.tabList = data;
 					
 				})
+			},
+			tab({data, index}){
+				console.log(data,index,"index");
 			}
 		}
 	}
 </script>
 
-<style>
-	
+<style lang="scss">
+	page{
+		height: 100%;
+		display: flex;
+	}
+	.home{
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		.scroll{
+			flex: 1;
+			overflow: hidden;
+			box-sizing: border-box;
+			.list-scroll{
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+			}
+		}
+	}
 </style>

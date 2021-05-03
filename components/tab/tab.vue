@@ -3,9 +3,10 @@
 		<scroll-view scroll-x="true" class="tab-scroll">
 			<view class="tab-scroll_box">
 				<view class="tab-scroll_item" 
-				v-for="item in list"
-				:key="item._id"
-				>
+					v-for="(item,index) in list" :key="item._id"
+					@click="tabItemClick(item, index)"
+					:class="{active: activeIndex===index?true:false }"
+					>
 					{{item.name}}
 				</view>
 			</view>
@@ -19,22 +20,29 @@
 <script>
 	export default {
 		name: "tab",
-		props:{
-			list:{
-				type:Array,
-				default(){
+		props: {
+			list: {
+				type: Array,
+				default () {
 					return [];
 				}
 			}
 		},
 		data() {
 			return {
-				
+				activeIndex: 0
 			};
 		},
-		
+
 		methods: {
-			
+			tabItemClick(data, index){
+				this.activeIndex = index;
+				this.$emit("tab",{
+					data,
+					index
+				})
+			}
+
 		}
 	}
 </script>
@@ -63,6 +71,9 @@
 					padding: 0 10px;
 					color: #333;
 					font-size: 14px;
+					&.active{
+						color: $mk-base-color;
+					}
 				}
 			}
 		}
