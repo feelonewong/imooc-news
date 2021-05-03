@@ -1,7 +1,7 @@
 <template>
 	<swiper class="home-swiper" :current="activeIndex" @change="changeListItem">
 		<swiper-item class="swiper-item" v-for="(item, index) in tab" :key="index">
-			<ListItem :list="list"></ListItem>
+			<ListItem :list="listCacheData[index]"></ListItem>
 		</swiper-item>
 
 
@@ -33,21 +33,28 @@
 			};
 		},
 		watch:{
-			
+			tab(newValue){
+				if(newValue.length===0){
+					return;
+				}
+				this.getList(this.activeIndex);
+				console.log(newValue,'---');
+			}
 		},
 		methods: {
 			changeListItem(e) {
 				let idx = e.detail.current;
+				this.getList(idx);
 				this.$emit("changeListItem", idx);
-				// this.tab[idx].name
-				this.getList(current);
 			},
 			getList(current) {
 				this.$api.get_list({
 					name: this.tab[current].name
 				}).then((response) => {
 					let {data} = response;
-					this.list = data;
+					this.listCacheData[current] = data;
+					this.$set(this.listCacheData, current,data);
+					this.$forceUpdate();
 				})
 			}
 		},
