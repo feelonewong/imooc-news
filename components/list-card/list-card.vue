@@ -10,6 +10,7 @@
 					<text>
 						{{item.title}}
 					</text>
+					<likes :item="item"></likes>
 				</view>
 				<view class="listcard-content__desc">
 					<view class="listcard-content__desc-label">
@@ -32,6 +33,7 @@
 					<text>
 						{{item.title}}
 					</text>
+					<likes :item="item"></likes>
 				</view>
 				<view class="listcard-image">
 					<view class="listcard-image-item" v-for="(childItem,index) in item.cover.slice(0,4)" >
@@ -64,6 +66,7 @@
 					<text>
 						{{item.title}}
 					</text>
+					<likes :item="item"></likes>
 				</view>
 				
 				<view class="listcard-content__desc">
@@ -137,7 +140,8 @@
 				color: #333;
 				font-weight: 400;
 				line-height: 1.2;
-
+				position: relative;
+				padding-right: 20px;
 				text {
 					overflow: hidden;
 					text-overflow: ellipsis;

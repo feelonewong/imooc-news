@@ -58,6 +58,7 @@
 			},
 			changeListItem(value){
 				this.tabIndex = value;
+				this.activeIndex = value;
 			}
 		}
 	}
